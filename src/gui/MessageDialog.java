@@ -44,7 +44,7 @@ public class MessageDialog extends JDialog {
 			fileName = "info2.png";
 		} else {
 			fileName = "cal2.png";
-			message = "Mega Calculator\nCreated by\nBishoy Bassem Morris";
+			message = "Created By\nBishoy Bassem Morris\ngithub.com/bishoybassem";
 		}
 		
 		JLabel image = new JLabel(MegaCalculator.images.get(fileName));
