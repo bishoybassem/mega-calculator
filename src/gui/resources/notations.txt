@@ -1,0 +1,40 @@
+Notations : 
+
+Operations :
+          Addition  =  +
+          Subtraction  =  -
+          Multiplication  =  *
+          Division  =  /
+          Power  =  ^
+          Remainder  =  %
+
+Functions :
+          Natural logarithm  =  ln
+          Common logarithm  =  log
+          Square root  =  cbrt
+          Cubic root  =  sqrt
+          Factorial  =  fac
+          Absolute  =  abs
+          Trig. functions  =  sin , cos , tan , sec , csc , cot
+          Inverse trig. functions = arcsin , arccos , arctan , arcsec , arccsc , arccot
+          Hyperbolic functions = sinh , cosh , tanh , sech , csch , coth
+          Inverse hyperbolic functions = arcsinh , arccosh , arctanh , arcsech , arccsch , arccoth
+	
+Constants :
+          pi ,  e
+        
+Notes :
+        - You can use parentheses to group terms
+        - Spaces are ignored
+          Ex : s   i n(3  0) = sin(30)
+          
+Function Examples :
+          F(x) = (2x^3 + x^2) / 2
+          F(x) = sin(x)^2  + cos(x)^2
+          F(x) = 2ln(x) + 3log(x) + 4e^x + 2
+          F(x) = sqrt(x^2 + 4) + abs(x - 3)
+			
+Expression Examples:
+          3^2 - 6 + 10 % 3 / 6
+          ln(e) + 2sin(2pi) - fac(3) * 2
+          sinh(2)^2 + cosh(2)^2 + ln(cosh(2))^2
