@@ -33,7 +33,7 @@ public class SimpleView extends CalculatorInterface {
 		input.getInputMap().put(KeyStroke.getKeyStroke("ENTER"), "pressEqual");
 		input.getActionMap().put("pressEqual", new AbstractAction(){
 
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				calculate();
 			}
 			

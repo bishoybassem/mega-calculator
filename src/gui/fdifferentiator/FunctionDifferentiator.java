@@ -31,7 +31,7 @@ public class FunctionDifferentiator extends JFrame {
 		calculate.setFocusable(false);
 		calculate.addActionListener(new ActionListener(){
 			
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				differentialPanel.calculate();
 			}
 			
@@ -41,7 +41,7 @@ public class FunctionDifferentiator extends JFrame {
 		clear.setFocusable(false);
 		clear.addActionListener(new ActionListener(){
 			
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				differentialPanel.clear();
 			}
 			

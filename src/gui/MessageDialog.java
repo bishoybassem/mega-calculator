@@ -8,6 +8,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Scanner;
 
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
@@ -16,6 +17,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 
@@ -25,35 +27,41 @@ public class MessageDialog extends JDialog {
 	public static final int ERROR = 0;
 	public static final int RESULT = 1;
 	public static final int ABOUT = 2; 
+	public static final int NOTATIONS = 3; 
 	
 	private int type;
+	private static String aboutText;
+	private static String notationsText;
+	
+	static {
+		aboutText = readTextFile("resources/about.txt");
+		notationsText = readTextFile("resources/notations.txt");
+	}
 	
 	public MessageDialog(JFrame main, int type) {
 		this(main, null, type);
 	}
 	
-	public MessageDialog(JFrame main, String message, int type) {
-		super(main, (type == 0)? "Error" : ((type == 1)? "Result" : "About"), true);
-		
+	public MessageDialog(JFrame main, String message, final int type) {
+		super(main, true);
 		this.type = type;
-		
-		String fileName;
-		if (type == 0) {
+
+		String fileName = null;
+		if (type == ERROR) {
+			setTitle("Error");
 			fileName = "error.png";
-		} else if (type == 1) {
+		} else if (type == RESULT) {
+			setTitle("Result");
 			fileName = "info2.png";
-		} else {
+		} else if (type == ABOUT) {
+			setTitle("About");
+			message = aboutText;
 			fileName = "cal2.png";
-			message = "Created By\nBishoy Bassem Morris\ngithub.com/bishoybassem";
+		} else {
+			setTitle("Notations");
+			message = notationsText;
 		}
-		
-		JLabel image = new JLabel(MegaCalculator.images.get(fileName));
-		JTextArea text = new JTextArea(message);
-		text.setOpaque(false);
-		text.setEditable(false);
-		text.setFocusable(false);
-		text.setBackground(new Color(238, 238, 238));
-		
+				
 		JButton ok = new JButton("OK");
 		ok.addActionListener(new ActionListener(){
 
@@ -71,12 +79,32 @@ public class MessageDialog extends JDialog {
 			
 		});
 		
+		JTextArea text = new JTextArea(message);
+		text.setFocusable(false);
+		if (type == NOTATIONS) {
+			text.setRows(15);
+			text.setBorder(BorderFactory.createEmptyBorder(0, 5, 5, 15));
+		} else {
+			text.setOpaque(false);
+			text.setBackground(new Color(238, 238, 238));
+		}
+		
 		JPanel p1 = new JPanel();
-		p1.setLayout(new FlowLayout(0, 10, FlowLayout.LEFT));
 		p1.setOpaque(false);
-		p1.add(image);
-		p1.add(text);
-		p1.setBorder(BorderFactory.createEmptyBorder(10, 0, 5, 0));
+		if (type == NOTATIONS) {
+			JScrollPane scrollPane = new JScrollPane(text);
+			scrollPane.setFocusable(false);
+			scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+			scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+			
+			p1.add(scrollPane);
+			p1.setBorder(BorderFactory.createEmptyBorder(5,5,0,5));
+		} else {
+			p1.setLayout(new FlowLayout(0, 10, FlowLayout.LEFT));
+			p1.add(new JLabel(MegaCalculator.images.get(fileName)));
+			p1.add(text);
+			p1.setBorder(BorderFactory.createEmptyBorder(10, 0, 5, 0));
+		}
 		
 		JPanel p2 = new JPanel();
 		p2.setOpaque(false);
@@ -93,11 +121,20 @@ public class MessageDialog extends JDialog {
         	    int w = getWidth();
         	    int h = getHeight();
         	    
-        	    GradientPaint gp = new GradientPaint(w / 4, 0, Color.WHITE, w, 0, new Color(210, 210, 210));
-        	    g2d.setPaint(Color.WHITE);
-        	    g2d.fillRect(0, 0, w / 2, h);
-        	    g2d.setPaint(gp);
-        	    g2d.fillRect(w / 4, 0, w, h);
+        	    if (type == NOTATIONS) {
+        	    	GradientPaint gp1 = new GradientPaint(0, 0, new Color(210, 210, 210), w / 2, 0, Color.WHITE);
+            	    g2d.setPaint(gp1);
+            	    g2d.fillRect(0, 0, w / 2, h);
+        	    	GradientPaint gp2 = new GradientPaint(w / 2, 0, Color.WHITE, w, 0, new Color(210, 210, 210));
+            	    g2d.setPaint(gp2);
+            	    g2d.fillRect(w / 2, 0, w, h);
+        	    } else {
+            	    g2d.setPaint(Color.WHITE);
+            	    g2d.fillRect(0, 0, w / 2, h);
+            	    GradientPaint gp = new GradientPaint(w / 4, 0, Color.WHITE, w, 0, new Color(210, 210, 210));
+            	    g2d.setPaint(gp);
+            	    g2d.fillRect(w / 4, 0, w, h);
+        	    }
         	 
         	    setOpaque(false);
         	    super.paintComponent(g);
@@ -124,6 +161,27 @@ public class MessageDialog extends JDialog {
 			}
 		}
 		super.setVisible(isVisible);
+	}
+	
+	public static String readTextFile(String path) {
+		String text = "";
+		Scanner sc = null;
+		try {
+			sc = new Scanner(MessageDialog.class.getResourceAsStream(path));
+			while (sc.hasNext()){
+				text += sc.nextLine();
+				if (sc.hasNext()){
+					text += "\n";
+				}
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (sc != null){
+				sc.close();
+			}	
+		}
+		return text;
 	}
 		
 }

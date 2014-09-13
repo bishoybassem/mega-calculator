@@ -37,8 +37,8 @@ import javax.swing.UIManager;
 public class MegaCalculator extends JFrame {
 	
 	private CalculatorInterface current;
-	private NotationsDialog notationsDialog;
-	private MessageDialog messageDialog;
+	private MessageDialog notationsDialog;
+	private MessageDialog aboutDialog;
 	
 	private JButton switchView;
 	private JButton switchAngle;
@@ -104,15 +104,17 @@ public class MegaCalculator extends JFrame {
 		UIManager.put("TextArea.font", new Font("sansserif", Font.PLAIN, 17));
 		UIManager.put("ComboBox.font", new Font("sansserif", Font.PLAIN, 17));
 
-		notationsDialog = new NotationsDialog(this);
-		messageDialog = new MessageDialog(this, MessageDialog.ABOUT);
+		notationsDialog = new MessageDialog(this, MessageDialog.NOTATIONS);
+		aboutDialog = new MessageDialog(this, MessageDialog.ABOUT);
 
 		switchAngle = new JButton("Radians");
 		switchAngle.setFocusable(false);
 		switchAngle.addActionListener(new ActionListener(){
 
-			public void actionPerformed(ActionEvent arg0) {
-				switchCurrentAngle();
+			public void actionPerformed(ActionEvent e) {
+				CalculatorInterface.degrees = !CalculatorInterface.degrees;
+				switchAngle.setText((CalculatorInterface.degrees)? "Radians" : "Degrees");
+				setCurrentView(current instanceof ImageView);
 			}
         	
         });
@@ -121,8 +123,8 @@ public class MegaCalculator extends JFrame {
 		switchView.setFocusable(false);
 		switchView.addActionListener(new ActionListener(){
 
-			public void actionPerformed(ActionEvent arg0) {
-				switchCurrentView();
+			public void actionPerformed(ActionEvent e) {
+				setCurrentView(current instanceof SimpleView);
 			}
         	
         });
@@ -131,8 +133,8 @@ public class MegaCalculator extends JFrame {
 		clear.setFocusable(false);
 		clear.addActionListener(new ActionListener(){
 
-			public void actionPerformed(ActionEvent arg0) {
-				clear();
+			public void actionPerformed(ActionEvent e) {
+				setCurrentView(current instanceof ImageView);
 			}
         	
         });
@@ -175,19 +177,14 @@ public class MegaCalculator extends JFrame {
 		};
 		p1.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, new Color(210, 210, 210)));
 		p1.add(menu);
-		
+				
 		getContentPane().setBackground(Color.WHITE);
 		add(main);
 		add(p1, BorderLayout.WEST);
-		pack();
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
 		setIconImages(Arrays.asList(new Image[]{images.get("cal1.png").getImage(), images.get("cal2.png").getImage()}));
 		setResizable(false);
-		
-		switchCurrentView();
-		
+		setCurrentView(true);
 		setLocationRelativeTo(null);
 	}
 	
@@ -231,42 +228,42 @@ public class MegaCalculator extends JFrame {
         
         buttons[0].addActionListener(new ActionListener(){
 
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				new FunctionGrapher().setVisible(true);
 			}
         	
         });
         buttons[1].addActionListener(new ActionListener(){
 
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				new FunctionDifferentiator().setVisible(true);
 			}
         	
         });
         buttons[2].addActionListener(new ActionListener(){
 
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				new FunctionIntegrator().setVisible(true);
 			}
         	
         });
         buttons[3].addActionListener(new ActionListener(){
 
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				new LinearEquationsSolver().setVisible(true);
 			}
         	
         });
         buttons[4].addActionListener(new ActionListener(){
 
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				new MatrixCalculator().setVisible(true);
 			}
         	
         });
         buttons[5].addActionListener(new ActionListener(){
 
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				new UnitConverter().setVisible(true);
 			}
         	
@@ -274,71 +271,29 @@ public class MegaCalculator extends JFrame {
         buttons[6].addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
-				notationsDialog.refresh();
 				notationsDialog.setVisible(true);
-				notationsDialog.setLocationRelativeTo(null);
 			}
         	
         });
         buttons[7].addActionListener(new ActionListener(){
 
-			public void actionPerformed(ActionEvent arg0) {
-				messageDialog.setVisible(true);
+			public void actionPerformed(ActionEvent e) {
+				aboutDialog.setVisible(true);
 			}
         	
         });
         buttons[8].addActionListener(new ActionListener(){
 
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
         	
         });
 	}
-	
-	private void switchCurrentView() {
-		CalculatorInterface.degrees = true;
-		switchAngle.setText("Radians");
+
+	private void setCurrentView(boolean isImage) {
 		CalculatorInterface newOne;
-		if (current == null || current instanceof SimpleView){
-			switchView.setText("Simple view");
-			newOne = new ImageView(this);
-		} else {
-			switchView.setText("Image view");
-			newOne = new SimpleView(this);
-		}
-		main.add(newOne);
-		if (current != null){
-			main.remove(current);
-		}
-		current = newOne;
-		main.repaint();
-		pack();
-		current.setFocus();
-	}
-	
-	private void switchCurrentAngle() {
-		CalculatorInterface.degrees = !CalculatorInterface.degrees;
-		switchAngle.setText((CalculatorInterface.degrees)? "Radians" : "Degrees");
-		CalculatorInterface newOne;
-		if (current instanceof ImageView){
-			newOne = new ImageView(this);
-		} else {
-			newOne = new SimpleView(this);
-		}
-		main.add(newOne);
-		main.remove(current);
-		current = newOne;
-		main.repaint();
-		pack();
-		current.setFocus();
-	}
-	
-	private void clear() {
-		CalculatorInterface.degrees = true;
-		switchAngle.setText("Radians");
-		CalculatorInterface newOne;
-		if (current instanceof ImageView){
+		if (isImage){
 			switchView.setText("Simple view");
 			newOne = new ImageView(this);
 		} else {

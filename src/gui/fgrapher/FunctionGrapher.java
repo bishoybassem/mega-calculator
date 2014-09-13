@@ -87,7 +87,7 @@ public class FunctionGrapher extends JFrame {
         add.setOpaque(false);
         add.addActionListener(new ActionListener(){
 
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				functionDialog.setVisible(true);
 				functionDialog.setLocationRelativeTo(null);
 			}
@@ -98,7 +98,7 @@ public class FunctionGrapher extends JFrame {
         erase.setOpaque(false);
         erase.addActionListener(new ActionListener(){
 
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				graphs = new ArrayList<Graph>();
 				drawingPanel.clear();
 				clickButton(0);
@@ -110,7 +110,7 @@ public class FunctionGrapher extends JFrame {
         customize.setOpaque(false);
         customize.addActionListener(new ActionListener(){
 
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				rangesDialog.setVisible(true);
 				rangesDialog.setLocationRelativeTo(null);
 			}
@@ -121,7 +121,7 @@ public class FunctionGrapher extends JFrame {
         view.setOpaque(false);
         view.addActionListener(new ActionListener(){
 
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				viewsDialog.setVisible(true);
 				viewsDialog.setLocationRelativeTo(null);
 			}
@@ -132,7 +132,7 @@ public class FunctionGrapher extends JFrame {
         capture.setOpaque(false);
         capture.addActionListener(new ActionListener(){
 
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				saveImage();
 			}
         	

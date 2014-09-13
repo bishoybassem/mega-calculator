@@ -61,7 +61,7 @@ public class UnitsPanel extends JPanel {
 		quantity.getInputMap().put(KeyStroke.getKeyStroke("ENTER"), "calculate");
 		quantity.getActionMap().put("calculate", new AbstractAction(){
 
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				calculate();
 			}
 			

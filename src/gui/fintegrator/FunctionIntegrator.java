@@ -32,7 +32,7 @@ public class FunctionIntegrator extends JFrame {
 		calculate.setFocusable(false);
 		calculate.addActionListener(new ActionListener(){
 			
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				integralPanel.calculate();
 			}
 			
@@ -42,7 +42,7 @@ public class FunctionIntegrator extends JFrame {
 		clear.setFocusable(false);
 		clear.addActionListener(new ActionListener(){
 			
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				integralPanel.clear();
 			}
 			
