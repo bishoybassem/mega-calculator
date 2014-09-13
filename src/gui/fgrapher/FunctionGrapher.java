@@ -13,7 +13,9 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
@@ -27,6 +29,7 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 import javax.swing.border.LineBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import engine.Graph;
 import gui.MegaCalculator;
@@ -508,17 +511,19 @@ public class FunctionGrapher extends JFrame {
 	
 	private void saveImage() {
 		JFileChooser jfc = new JFileChooser();
-		
+		jfc.setAcceptAllFileFilterUsed(false);
+		jfc.addChoosableFileFilter(new FileNameExtensionFilter("JPG files", "jpg"));
+		jfc.setSelectedFile(new File(new SimpleDateFormat("dd-MM HH-mm-ss").format(new Date()) + ".jpg"));
+
 		int result = jfc.showSaveDialog(this);
-		if (result == JFileChooser.CANCEL_OPTION || result == JFileChooser.ERROR_OPTION) {
+		if (result == JFileChooser.CANCEL_OPTION || result == JFileChooser.ERROR_OPTION)
 			return;
-		}
 
 		File file;
-		if (jfc.getSelectedFile().exists()) {
-			file = jfc.getSelectedFile();
-		} else {
+		if (!jfc.getSelectedFile().getName().endsWith(".jpg")){
 			file = new File(jfc.getSelectedFile() + ".jpg");
+		} else {
+			file = jfc.getSelectedFile();
 		}
 	    
 	    BufferedImage bi = drawingPanel.capture();
