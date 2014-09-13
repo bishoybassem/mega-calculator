@@ -21,7 +21,7 @@ Mega Calculator is a standalone Java application, capable of performing basic an
 
 ### Download
 
-[Version 1.0](https://github.com/bishoybassem/mega-calculator/releases/download/v1.0/Mega.Calculator.jar)
+[Version 1.1](https://github.com/bishoybassem/mega-calculator/releases/download/v1.1/Mega.Calculator.jar)
 
 ### Screenshots
 
