@@ -45,8 +45,8 @@ public class MegaCalculator extends JFrame {
 	private JPanel menu;
 	private JPanel main; 
 
-	public static HashMap<String, ImageIcon> images;
-	public static HashMap<String, AudioClip> audio;
+	public static final HashMap<String, ImageIcon> images;
+	public static final HashMap<String, AudioClip> audio;
 	
 	static {
 		images = new HashMap<String, ImageIcon>();

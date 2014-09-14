@@ -30,8 +30,8 @@ public class MessageDialog extends JDialog {
 	public static final int NOTATIONS = 3; 
 	
 	private int type;
-	private static String aboutText;
-	private static String notationsText;
+	private static final String aboutText;
+	private static final String notationsText;
 	
 	static {
 		aboutText = readTextFile("resources/about.txt");
