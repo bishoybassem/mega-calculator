@@ -29,20 +29,17 @@ public class Equations {
 	
 	private String getSolution(double n, double d) {
 		if (d == 0) {
-			if (n == 0) {
+			if (n == 0)
 				return "Infinity";
-			} else {
-				return "Undefined";
-			}
-		} else if (d == 1) {
-			return String.format("%f", n);
-		} else {
-			if ((n / d) == 0){
-				return String.format("%f", 0.0);
-			} else {
-				return String.format("%f", (n / d));
-			}
+				
+			return "Undefined";
 		}
+		if (d == 1)
+			return String.format("%f", n);
+		if ((n / d) == 0)
+			return String.format("%f", 0.0);
+
+		return String.format("%f", (n / d));
 	}
 	
 }

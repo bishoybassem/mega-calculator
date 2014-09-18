@@ -12,9 +12,9 @@ public class Function {
 	
 	public Function(String function) {
 		function = prepareFunction(function);
-		if (function.isEmpty() || !isFunctionValid(function)){
+		if (function.isEmpty() || !isFunctionValid(function))
 			throw new RuntimeException("Syntax Error");
-		}
+		
 		this.function = function;
 	}
 	
@@ -88,9 +88,8 @@ public class Function {
 			sb.delete(begin, end + 1);
 			sb.insert(begin, evaluateExpression(s));
 			return evaluateExpression(sb.toString());
-		} else {
-			return performAllOperations(expression);
 		}
+		return performAllOperations(expression);
 	} 
 	
 	private static double performAllOperations(String expression) throws Exception {
@@ -125,21 +124,20 @@ public class Function {
 					first = j - 1;
 				} else if (k > 0){
 					first = k - 1;
-				} else {
+				} else
 					break;
-				}
+		
 				terms.set(first, "" + performOperation(terms.remove(first), terms.remove(first), terms.get(first)));
 			}
 		}
-		if (terms.size() != 1){
+		if (terms.size() != 1)
 			throw new RuntimeException();
-		}
+
 		double result = getTermValue(terms.get(0));
-		if (Double.isNaN(result) || Double.isInfinite(result)){
+		if (Double.isNaN(result) || Double.isInfinite(result))
 			throw new ArithmeticException();
-		} else {
-			return result;
-		}	
+
+		return result;
 	}
 	
 	private static double performOperation(String term1, String operation, String term2) throws Exception {
@@ -179,11 +177,10 @@ public class Function {
 				skip++;
 			}
 			if (expression.charAt(i) == ')'){
-				if (skip == 0){
+				if (skip == 0)
 					return i;
-				} else {
-					skip--;
-				}
+
+				skip--;
 			}
 		}
 		return -1;
@@ -215,49 +212,43 @@ public class Function {
 		if (expression.indexOf('(') >= 0){
 			int begin = expression.indexOf('(');
 			int end = getEnclosingBracket(expression, begin);
-			if (end < 0){
+			if (end < 0)
 				return false; 
-			}
+			
 			String s = expression.substring(begin + 1, end);
 			StringBuffer sb = new StringBuffer(expression);
-			if (s.isEmpty()) {
+			if (s.isEmpty())
 				return false;
-			}
+			
 			if (isFunctionValid(s)) {
 				sb.replace(begin, end + 1, " 1 ");
-			} else {
+			} else
 				return false;
-			}
+			
 			return isFunctionValid(sb.toString());
-		} else {
-			String[] sa = expression.trim().split("[\\s]+");
-			for (int i = 0; i < sa.length; i++) {
-				if (isFunction(sa[i])) {
-					if (i + 1 >= sa.length || isOperator(sa[i + 1]) || (i > 0 && isNumber(sa[i - 1]))){
-						return false;
-					}
-				} else if (isOperator(sa[i])) {
-					if (i == 0 || i + 1 >= sa.length || !isNumber(sa[i - 1]) || isOperator(sa[i + 1])){
-						return false;
-					}
-				} else if (isNumber(sa[i])) {
-					if ((i + 1 < sa.length && !isOperator(sa[i + 1])) || (i > 0 && isNumber(sa[i - 1]))){
-						return false;
-					}
-				} else {
-					return false;
-				}
-			}
-			return true;
 		}
+		String[] sa = expression.trim().split("[\\s]+");
+		for (int i = 0; i < sa.length; i++) {
+			if (isFunction(sa[i])) {
+				if (i + 1 >= sa.length || isOperator(sa[i + 1]) || (i > 0 && isNumber(sa[i - 1])))
+					return false;
+			} else if (isOperator(sa[i])) {
+				if (i == 0 || i + 1 >= sa.length || !isNumber(sa[i - 1]) || isOperator(sa[i + 1]))
+					return false;
+			} else if (isNumber(sa[i])) {
+				if ((i + 1 < sa.length && !isOperator(sa[i + 1])) || (i > 0 && isNumber(sa[i - 1])))
+					return false;
+			} else
+				return false;
+		}
+		return true;
 	}
 	
 	private static boolean isFunction(String s) {
 		Method[] functions = MathFunctions.class.getDeclaredMethods();
 		for (int i = 0; i < functions.length; i++){
-			if (functions[i].getName().equals(s)){
+			if (functions[i].getName().equals(s))
 				return true;
-			}
 		}
 		return false;
 	}
