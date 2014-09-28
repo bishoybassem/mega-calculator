@@ -19,7 +19,6 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
@@ -182,7 +181,7 @@ public class MegaCalculator extends JFrame {
 		add(main);
 		add(p1, BorderLayout.WEST);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
-		setIconImages(Arrays.asList(new Image[]{images.get("cal1.png").getImage(), images.get("cal2.png").getImage()}));
+		setIconImages(Arrays.asList(images.get("cal1.png").getImage(), images.get("cal2.png").getImage()));
 		setResizable(false);
 		setCurrentView(true);
 		setLocationRelativeTo(null);
