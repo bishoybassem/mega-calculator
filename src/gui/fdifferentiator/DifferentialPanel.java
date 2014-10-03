@@ -52,7 +52,7 @@ public class DifferentialPanel extends JPanel {
 		
 		setLayout(new FlowLayout(FlowLayout.LEFT, 10, 0));
 		setOpaque(false);
-		add(new JLabel(MegaCalculator.images.get("ddx.png")));
+		add(new JLabel(MegaCalculator.IMAGES.get("ddx.png")));
 		add(function);
 		add(new JLabel("at"));
 		add(label1);

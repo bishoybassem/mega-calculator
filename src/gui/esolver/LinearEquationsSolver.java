@@ -119,7 +119,7 @@ public class LinearEquationsSolver extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setResizable(false);
-		setIconImage(MegaCalculator.images.get("es.png").getImage());
+		setIconImage(MegaCalculator.IMAGES.get("es.png").getImage());
 		pack();
 		setLocationRelativeTo(null);
 		equationsPanel.setFocus();

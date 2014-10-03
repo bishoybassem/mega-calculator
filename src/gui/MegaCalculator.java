@@ -44,48 +44,48 @@ public class MegaCalculator extends JFrame {
 	private JPanel menu;
 	private JPanel main; 
 
-	public static final HashMap<String, ImageIcon> images;
-	public static final HashMap<String, AudioClip> audio;
+	public static final HashMap<String, ImageIcon> IMAGES;
+	public static final HashMap<String, AudioClip> AUDIO;
 	
 	static {
-		images = new HashMap<String, ImageIcon>();
-		images.put("fg.png", new ImageIcon(MegaCalculator.class.getResource("resources/fg.png")));
-		images.put("fd.png", new ImageIcon(MegaCalculator.class.getResource("resources/fd.png")));
-		images.put("fi.png", new ImageIcon(MegaCalculator.class.getResource("resources/fi.png")));
-		images.put("es.png", new ImageIcon(MegaCalculator.class.getResource("resources/es.png")));
-		images.put("mc.png", new ImageIcon(MegaCalculator.class.getResource("resources/mc.png")));
-		images.put("uc.png", new ImageIcon(MegaCalculator.class.getResource("resources/uc.png")));
-		images.put("help.png", new ImageIcon(MegaCalculator.class.getResource("resources/help.png")));
-		images.put("info1.png", new ImageIcon(MegaCalculator.class.getResource("resources/info1.png")));
-		images.put("info2.png", new ImageIcon(MegaCalculator.class.getResource("resources/info2.png")));
-		images.put("error.png", new ImageIcon(MegaCalculator.class.getResource("resources/error.png")));
-		images.put("exit.png", new ImageIcon(MegaCalculator.class.getResource("resources/exit.png")));
-		images.put("cal1.png", new ImageIcon(MegaCalculator.class.getResource("resources/cal1.png")));
-		images.put("cal2.png", new ImageIcon(MegaCalculator.class.getResource("resources/cal2.png")));
-		images.put("AllQuads.png", new ImageIcon(MegaCalculator.class.getResource("resources/AllQuads.png")));
-		images.put("1st2ndQuad.png", new ImageIcon(MegaCalculator.class.getResource("resources/1st2ndQuad.png")));
-		images.put("1stQuad.png", new ImageIcon(MegaCalculator.class.getResource("resources/1stQuad.png")));
-		images.put("2nd3rdQuad.png", new ImageIcon(MegaCalculator.class.getResource("resources/2nd3rdQuad.png")));
-		images.put("2ndQuad.png", new ImageIcon(MegaCalculator.class.getResource("resources/2ndQuad.png")));
-		images.put("3rd4thQuad.png", new ImageIcon(MegaCalculator.class.getResource("resources/3rd4thQuad.png")));
-		images.put("3rdQuad.png", new ImageIcon(MegaCalculator.class.getResource("resources/3rdQuad.png")));
-		images.put("4th1stQuad.png", new ImageIcon(MegaCalculator.class.getResource("resources/4th1stQuad.png")));
-		images.put("4thQuad.png", new ImageIcon(MegaCalculator.class.getResource("resources/4thQuad.png")));
-		images.put("camera.png", new ImageIcon(MegaCalculator.class.getResource("resources/camera.png")));
-		images.put("eraser.png", new ImageIcon(MegaCalculator.class.getResource("resources/eraser.png")));
-		images.put("graph.png", new ImageIcon(MegaCalculator.class.getResource("resources/graph.png")));
-		images.put("magnifying glass.png", new ImageIcon(MegaCalculator.class.getResource("resources/magnifying glass.png")));
-		images.put("settings.png", new ImageIcon(MegaCalculator.class.getResource("resources/settings.png")));
-		images.put("f(x).png", new ImageIcon(MegaCalculator.class.getResource("resources/f(x).png")));
-		images.put("differential.png", new ImageIcon(MegaCalculator.class.getResource("resources/differential.png")));
-		images.put("ddx.png", new ImageIcon(MegaCalculator.class.getResource("resources/ddx.png")));
-		images.put("integral.png", new ImageIcon(MegaCalculator.class.getResource("resources/integral.png")));
-		images.put("a.png", new ImageIcon(MegaCalculator.class.getResource("resources/a.png")));
-		images.put("b.png", new ImageIcon(MegaCalculator.class.getResource("resources/b.png")));
+		IMAGES = new HashMap<String, ImageIcon>();
+		IMAGES.put("fg.png", new ImageIcon(MegaCalculator.class.getResource("resources/fg.png")));
+		IMAGES.put("fd.png", new ImageIcon(MegaCalculator.class.getResource("resources/fd.png")));
+		IMAGES.put("fi.png", new ImageIcon(MegaCalculator.class.getResource("resources/fi.png")));
+		IMAGES.put("es.png", new ImageIcon(MegaCalculator.class.getResource("resources/es.png")));
+		IMAGES.put("mc.png", new ImageIcon(MegaCalculator.class.getResource("resources/mc.png")));
+		IMAGES.put("uc.png", new ImageIcon(MegaCalculator.class.getResource("resources/uc.png")));
+		IMAGES.put("help.png", new ImageIcon(MegaCalculator.class.getResource("resources/help.png")));
+		IMAGES.put("info1.png", new ImageIcon(MegaCalculator.class.getResource("resources/info1.png")));
+		IMAGES.put("info2.png", new ImageIcon(MegaCalculator.class.getResource("resources/info2.png")));
+		IMAGES.put("error.png", new ImageIcon(MegaCalculator.class.getResource("resources/error.png")));
+		IMAGES.put("exit.png", new ImageIcon(MegaCalculator.class.getResource("resources/exit.png")));
+		IMAGES.put("cal1.png", new ImageIcon(MegaCalculator.class.getResource("resources/cal1.png")));
+		IMAGES.put("cal2.png", new ImageIcon(MegaCalculator.class.getResource("resources/cal2.png")));
+		IMAGES.put("AllQuads.png", new ImageIcon(MegaCalculator.class.getResource("resources/AllQuads.png")));
+		IMAGES.put("1st2ndQuad.png", new ImageIcon(MegaCalculator.class.getResource("resources/1st2ndQuad.png")));
+		IMAGES.put("1stQuad.png", new ImageIcon(MegaCalculator.class.getResource("resources/1stQuad.png")));
+		IMAGES.put("2nd3rdQuad.png", new ImageIcon(MegaCalculator.class.getResource("resources/2nd3rdQuad.png")));
+		IMAGES.put("2ndQuad.png", new ImageIcon(MegaCalculator.class.getResource("resources/2ndQuad.png")));
+		IMAGES.put("3rd4thQuad.png", new ImageIcon(MegaCalculator.class.getResource("resources/3rd4thQuad.png")));
+		IMAGES.put("3rdQuad.png", new ImageIcon(MegaCalculator.class.getResource("resources/3rdQuad.png")));
+		IMAGES.put("4th1stQuad.png", new ImageIcon(MegaCalculator.class.getResource("resources/4th1stQuad.png")));
+		IMAGES.put("4thQuad.png", new ImageIcon(MegaCalculator.class.getResource("resources/4thQuad.png")));
+		IMAGES.put("camera.png", new ImageIcon(MegaCalculator.class.getResource("resources/camera.png")));
+		IMAGES.put("eraser.png", new ImageIcon(MegaCalculator.class.getResource("resources/eraser.png")));
+		IMAGES.put("graph.png", new ImageIcon(MegaCalculator.class.getResource("resources/graph.png")));
+		IMAGES.put("magnifying glass.png", new ImageIcon(MegaCalculator.class.getResource("resources/magnifying glass.png")));
+		IMAGES.put("settings.png", new ImageIcon(MegaCalculator.class.getResource("resources/settings.png")));
+		IMAGES.put("f(x).png", new ImageIcon(MegaCalculator.class.getResource("resources/f(x).png")));
+		IMAGES.put("differential.png", new ImageIcon(MegaCalculator.class.getResource("resources/differential.png")));
+		IMAGES.put("ddx.png", new ImageIcon(MegaCalculator.class.getResource("resources/ddx.png")));
+		IMAGES.put("integral.png", new ImageIcon(MegaCalculator.class.getResource("resources/integral.png")));
+		IMAGES.put("a.png", new ImageIcon(MegaCalculator.class.getResource("resources/a.png")));
+		IMAGES.put("b.png", new ImageIcon(MegaCalculator.class.getResource("resources/b.png")));
 		
-		audio = new HashMap<String, AudioClip>();
-		audio.put("error.wav", Applet.newAudioClip(MegaCalculator.class.getResource("resources/error.wav"))); 
-		audio.put("notify.wav", Applet.newAudioClip(MegaCalculator.class.getResource("resources/notify.wav"))); 
+		AUDIO = new HashMap<String, AudioClip>();
+		AUDIO.put("error.wav", Applet.newAudioClip(MegaCalculator.class.getResource("resources/error.wav"))); 
+		AUDIO.put("notify.wav", Applet.newAudioClip(MegaCalculator.class.getResource("resources/notify.wav"))); 
 	}
 	
 	public MegaCalculator(){
@@ -181,7 +181,7 @@ public class MegaCalculator extends JFrame {
 		add(main);
 		add(p1, BorderLayout.WEST);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
-		setIconImages(Arrays.asList(images.get("cal1.png").getImage(), images.get("cal2.png").getImage()));
+		setIconImages(Arrays.asList(IMAGES.get("cal1.png").getImage(), IMAGES.get("cal2.png").getImage()));
 		setResizable(false);
 		setCurrentView(true);
 		setLocationRelativeTo(null);
@@ -199,15 +199,15 @@ public class MegaCalculator extends JFrame {
 		p2.setOpaque(false);
 		
 		JButton[] buttons = new JButton[9];
-        buttons[0] = new JButton("Function Grapher", images.get("fg.png")); 
-        buttons[1] = new JButton("Function Differentiator", images.get("fd.png")); 
-        buttons[2] = new JButton("Function Integrator", images.get("fi.png")); 
-        buttons[3] = new JButton("Linear Equations Solver", images.get("es.png")); 
-        buttons[4] = new JButton("Matrix Calculator", images.get("mc.png")); 
-        buttons[5] = new JButton("Unit Converter", images.get("uc.png")); 
-        buttons[6] = new JButton("Notations", images.get("help.png"));
-        buttons[7] = new JButton("About", images.get("info1.png"));
-        buttons[8] = new JButton("Exit", images.get("exit.png"));
+        buttons[0] = new JButton("Function Grapher", IMAGES.get("fg.png")); 
+        buttons[1] = new JButton("Function Differentiator", IMAGES.get("fd.png")); 
+        buttons[2] = new JButton("Function Integrator", IMAGES.get("fi.png")); 
+        buttons[3] = new JButton("Linear Equations Solver", IMAGES.get("es.png")); 
+        buttons[4] = new JButton("Matrix Calculator", IMAGES.get("mc.png")); 
+        buttons[5] = new JButton("Unit Converter", IMAGES.get("uc.png")); 
+        buttons[6] = new JButton("Notations", IMAGES.get("help.png"));
+        buttons[7] = new JButton("About", IMAGES.get("info1.png"));
+        buttons[8] = new JButton("Exit", IMAGES.get("exit.png"));
         
         for (int i = 0; i < buttons.length; i++){
         	buttons[i].setHorizontalAlignment(JButton.LEADING);

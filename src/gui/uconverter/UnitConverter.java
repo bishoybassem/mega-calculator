@@ -112,7 +112,7 @@ public class UnitConverter extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setResizable(false);
-		setIconImage(MegaCalculator.images.get("uc.png").getImage());
+		setIconImage(MegaCalculator.IMAGES.get("uc.png").getImage());
 		add(p1, BorderLayout.NORTH);
 		add(unitsPanel);
 		add(p2, BorderLayout.SOUTH);

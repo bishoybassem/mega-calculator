@@ -30,12 +30,12 @@ public class MessageDialog extends JDialog {
 	public static final int NOTATIONS = 3; 
 	
 	private int type;
-	private static final String aboutText;
-	private static final String notationsText;
+	private static final String ABOUT_TEXT;
+	private static final String NOTATIONS_TEXT;
 	
 	static {
-		aboutText = readTextFile("resources/about.txt");
-		notationsText = readTextFile("resources/notations.txt");
+		ABOUT_TEXT = readTextFile("resources/about.txt");
+		NOTATIONS_TEXT = readTextFile("resources/notations.txt");
 	}
 	
 	public MessageDialog(JFrame main, int type) {
@@ -55,11 +55,11 @@ public class MessageDialog extends JDialog {
 			fileName = "info2.png";
 		} else if (type == ABOUT) {
 			setTitle("About");
-			message = aboutText;
+			message = ABOUT_TEXT;
 			fileName = "cal2.png";
 		} else {
 			setTitle("Notations");
-			message = notationsText;
+			message = NOTATIONS_TEXT;
 		}
 				
 		JButton ok = new JButton("OK");
@@ -101,7 +101,7 @@ public class MessageDialog extends JDialog {
 			p1.setBorder(BorderFactory.createEmptyBorder(5,5,0,5));
 		} else {
 			p1.setLayout(new FlowLayout(0, 10, FlowLayout.LEFT));
-			p1.add(new JLabel(MegaCalculator.images.get(fileName)));
+			p1.add(new JLabel(MegaCalculator.IMAGES.get(fileName)));
 			p1.add(text);
 			p1.setBorder(BorderFactory.createEmptyBorder(10, 0, 5, 0));
 		}
@@ -155,9 +155,9 @@ public class MessageDialog extends JDialog {
 	public void setVisible(boolean isVisible) {
 		if (isVisible) {
 			if (type == 0) {
-				MegaCalculator.audio.get("error.wav").play();
+				MegaCalculator.AUDIO.get("error.wav").play();
 			} else if (type == 1) {
-				MegaCalculator.audio.get("notify.wav").play();
+				MegaCalculator.AUDIO.get("notify.wav").play();
 			}
 		}
 		super.setVisible(isVisible);

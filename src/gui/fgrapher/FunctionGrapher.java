@@ -53,7 +53,7 @@ public class FunctionGrapher extends JFrame {
 		super("Function Grapher");
 		drawingPanel = new DrawingPanel();
 
-		setIconImage(MegaCalculator.images.get("fg.png").getImage());
+		setIconImage(MegaCalculator.IMAGES.get("fg.png").getImage());
 		setToolBar();
 		setFunctionDialog();
 		setViewsDialog();
@@ -185,7 +185,7 @@ public class FunctionGrapher extends JFrame {
 		
 		JPanel p1 = new JPanel();
 		p1.setOpaque(false);
-		p1.add(new JLabel(MegaCalculator.images.get("f(x).png")));
+		p1.add(new JLabel(MegaCalculator.IMAGES.get("f(x).png")));
 		p1.add(new JLabel(" = "));
 		p1.add(function);
 		
@@ -232,15 +232,15 @@ public class FunctionGrapher extends JFrame {
 		
 	private void setViewsDialog() {
 		buttons = new JButton[9];
-		buttons[0] = new JButton(MegaCalculator.images.get("AllQuads.png"));
-		buttons[1] = new JButton(MegaCalculator.images.get("1stQuad.png"));
-		buttons[2] = new JButton(MegaCalculator.images.get("2ndQuad.png"));
-		buttons[3] = new JButton(MegaCalculator.images.get("3rdQuad.png"));
-		buttons[4] = new JButton(MegaCalculator.images.get("4thQuad.png"));
-		buttons[5] = new JButton(MegaCalculator.images.get("1st2ndQuad.png"));
-		buttons[6] = new JButton(MegaCalculator.images.get("2nd3rdQuad.png"));
-		buttons[7] = new JButton(MegaCalculator.images.get("3rd4thQuad.png"));
-		buttons[8] = new JButton(MegaCalculator.images.get("4th1stQuad.png"));
+		buttons[0] = new JButton(MegaCalculator.IMAGES.get("AllQuads.png"));
+		buttons[1] = new JButton(MegaCalculator.IMAGES.get("1stQuad.png"));
+		buttons[2] = new JButton(MegaCalculator.IMAGES.get("2ndQuad.png"));
+		buttons[3] = new JButton(MegaCalculator.IMAGES.get("3rdQuad.png"));
+		buttons[4] = new JButton(MegaCalculator.IMAGES.get("4thQuad.png"));
+		buttons[5] = new JButton(MegaCalculator.IMAGES.get("1st2ndQuad.png"));
+		buttons[6] = new JButton(MegaCalculator.IMAGES.get("2nd3rdQuad.png"));
+		buttons[7] = new JButton(MegaCalculator.IMAGES.get("3rd4thQuad.png"));
+		buttons[8] = new JButton(MegaCalculator.IMAGES.get("4th1stQuad.png"));
 
 		buttons[0].addActionListener(new ActionListener(){
 
@@ -445,7 +445,7 @@ public class FunctionGrapher extends JFrame {
 	}
 	
 	private JButton createButton(String fileName, String toolTipText) {
-		JButton button = new JButton(MegaCalculator.images.get(fileName)){
+		JButton button = new JButton(MegaCalculator.IMAGES.get(fileName)){
 			
 			public Point getToolTipLocation(MouseEvent event) { 
         		return new Point(event.getX() + 10, event.getY() + 20); 

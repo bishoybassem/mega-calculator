@@ -65,17 +65,17 @@ public class IntegralPanel extends JPanel {
 		
 		JPanel p1 = new JPanel();
 		p1.setOpaque(false);
-		p1.add(new JLabel(MegaCalculator.images.get("integral.png")));
+		p1.add(new JLabel(MegaCalculator.IMAGES.get("integral.png")));
 		p1.add(function);
-		p1.add(new JLabel(MegaCalculator.images.get("differential.png")));
+		p1.add(new JLabel(MegaCalculator.IMAGES.get("differential.png")));
 		
 		JPanel p2 = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
 		p2.setOpaque(false);
-		p2.add(new JLabel(MegaCalculator.images.get("a.png")));
+		p2.add(new JLabel(MegaCalculator.IMAGES.get("a.png")));
 		p2.add(new JLabel(" = "));
 		p2.add(from);
 		p2.add(Box.createRigidArea(new Dimension(10, 0)));
-		p2.add(new JLabel(MegaCalculator.images.get("b.png")));
+		p2.add(new JLabel(MegaCalculator.IMAGES.get("b.png")));
 		p2.add(new JLabel(" = "));
 		p2.add(to);
 		p2.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0));

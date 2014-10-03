@@ -121,7 +121,7 @@ public class MatrixCalculator extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setResizable(false);
-		setIconImage(MegaCalculator.images.get("mc.png").getImage());
+		setIconImage(MegaCalculator.IMAGES.get("mc.png").getImage());
 		
 		setLayout(new BorderLayout(0, 5));
 		add(p1, BorderLayout.NORTH);

@@ -85,7 +85,7 @@ public class FunctionIntegrator extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setResizable(false);
-		setIconImage(MegaCalculator.images.get("fi.png").getImage());
+		setIconImage(MegaCalculator.IMAGES.get("fi.png").getImage());
 		add(p2);
 		pack();
 		setLocationRelativeTo(null);
